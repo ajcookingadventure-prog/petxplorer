@@ -306,7 +306,7 @@
     .colour-chip:hover { border-color: var(--pink); box-shadow: 0 0 0 3px var(--pink-glow); }
     .colour-chip.chip-active { border-color: var(--pink); background: var(--pink-light); }
     .chip-swatch { width: 100%; aspect-ratio: 1 / 1; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); object-fit: cover; display: block; }
-    .chip-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mid); text-align: center; line-height: 1.3; }
+    .chip-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mid); text-align: center; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center; }
     .chip-qty-ctrl { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
     .chip-qty-btn { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--white); font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .18s; line-height: 1; }
     .chip-qty-btn:hover { border-color: var(--pink); }
@@ -361,11 +361,10 @@
         top: 0;
       }
       .scroll-area {
-        max-height: 60vh;
-        overflow-y: auto;
-        padding-right: 6px;
-        margin-right: -6px;
-        -webkit-overflow-scrolling: touch;
+        max-height: none !important;
+        overflow-y: visible !important;
+        padding-right: 0;
+        margin-right: 0;
       }
       .extra-section.active .extra-header {
         position: -webkit-sticky;
@@ -457,6 +456,7 @@
       .swatch-grid::-webkit-scrollbar { display: none; }
       .swatch { width: 68px; }
       .chip-grid { grid-template-columns: repeat(3, 1fr); align-items: start; }
+      .chip-swatch { width: 100%; aspect-ratio: 1 / 1; height: auto; }
       #p9 .card-ui--success { padding: 60px 24px; }
       #p9 .page-title { font-size: 32px; }
     }
@@ -895,22 +895,22 @@
                 <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L62','Aussie Stars',1)">+</button>
               </div>
             </div>
-            <div class="colour-chip" id="chip-Cushion-L52-Parachuting Kitties">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
-              <div class="chip-name">Parachuting Kitties</div>
+            <div class="colour-chip" id="chip-Cushion-L52-Parachuting Puss">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Puss">
+              <div class="chip-name">Parachuting Puss</div>
               <div class="chip-size-pills">
-                <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Parachuting Kitties','L52')" data-size="L52">L52</button>
-                <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Parachuting Kitties','L62')" data-size="L62">L62</button>
+                <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Parachuting Puss','L52')" data-size="L52">L52</button>
+                <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Parachuting Puss','L62')" data-size="L62">L62</button>
               </div>
-              <div class="chip-size-qty-row" id="qrow-Cushion-L52-Parachuting Kitties" style="display:none;">
-                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L52','Parachuting Kitties',-1)">−</button>
-                <div id="qty-Cushion-L52-Parachuting Kitties" class="chip-qty-num">0</div>
-                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L52','Parachuting Kitties',1)">+</button>
+              <div class="chip-size-qty-row" id="qrow-Cushion-L52-Parachuting Puss" style="display:none;">
+                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L52','Parachuting Puss',-1)">−</button>
+                <div id="qty-Cushion-L52-Parachuting Puss" class="chip-qty-num">0</div>
+                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L52','Parachuting Puss',1)">+</button>
               </div>
-              <div class="chip-size-qty-row" id="qrow-Cushion-L62-Parachuting Kitties" style="display:none;">
-                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L62','Parachuting Kitties',-1)">−</button>
-                <div id="qty-Cushion-L62-Parachuting Kitties" class="chip-qty-num">0</div>
-                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L62','Parachuting Kitties',1)">+</button>
+              <div class="chip-size-qty-row" id="qrow-Cushion-L62-Parachuting Puss" style="display:none;">
+                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L62','Parachuting Puss',-1)">−</button>
+                <div id="qty-Cushion-L62-Parachuting Puss" class="chip-qty-num">0</div>
+                <button class="chip-qty-btn" onclick="updateExtraQty('Cushion-L62','Parachuting Puss',1)">+</button>
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Patina Dusk">
@@ -1312,22 +1312,22 @@
                 <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L62','Aussie Stars',1);updateChip('ExtraCushion-L62-Aussie Stars')">+</button>
               </div>
             </div>
-            <div class="colour-chip" id="chip-ExtraCushion-L52-Parachuting Kitties">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
-              <div class="chip-name">Parachuting Kitties</div>
+            <div class="colour-chip" id="chip-ExtraCushion-L52-Parachuting Puss">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Puss">
+              <div class="chip-name">Parachuting Puss</div>
               <div class="chip-size-pills">
-                <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Parachuting Kitties','L52')" data-size="L52">L52</button>
-                <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Parachuting Kitties','L62')" data-size="L62">L62</button>
+                <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Parachuting Puss','L52')" data-size="L52">L52</button>
+                <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Parachuting Puss','L62')" data-size="L62">L62</button>
               </div>
-              <div class="chip-size-qty-row" id="qrow-ExtraCushion-L52-Parachuting Kitties" style="display:none;">
-                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L52','Parachuting Kitties',-1);updateChip('ExtraCushion-L52-Parachuting Kitties')">−</button>
-                <div id="qty-ExtraCushion-L52-Parachuting Kitties" class="chip-qty-num">0</div>
-                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L52','Parachuting Kitties',1);updateChip('ExtraCushion-L52-Parachuting Kitties')">+</button>
+              <div class="chip-size-qty-row" id="qrow-ExtraCushion-L52-Parachuting Puss" style="display:none;">
+                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L52','Parachuting Puss',-1);updateChip('ExtraCushion-L52-Parachuting Puss')">−</button>
+                <div id="qty-ExtraCushion-L52-Parachuting Puss" class="chip-qty-num">0</div>
+                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L52','Parachuting Puss',1);updateChip('ExtraCushion-L52-Parachuting Puss')">+</button>
               </div>
-              <div class="chip-size-qty-row" id="qrow-ExtraCushion-L62-Parachuting Kitties" style="display:none;">
-                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L62','Parachuting Kitties',-1);updateChip('ExtraCushion-L62-Parachuting Kitties')">−</button>
-                <div id="qty-ExtraCushion-L62-Parachuting Kitties" class="chip-qty-num">0</div>
-                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L62','Parachuting Kitties',1);updateChip('ExtraCushion-L62-Parachuting Kitties')">+</button>
+              <div class="chip-size-qty-row" id="qrow-ExtraCushion-L62-Parachuting Puss" style="display:none;">
+                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L62','Parachuting Puss',-1);updateChip('ExtraCushion-L62-Parachuting Puss')">−</button>
+                <div id="qty-ExtraCushion-L62-Parachuting Puss" class="chip-qty-num">0</div>
+                <button class="chip-qty-btn" onclick="updateExtraQty('ExtraCushion-L62','Parachuting Puss',1);updateChip('ExtraCushion-L62-Parachuting Puss')">+</button>
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Patina Dusk">
