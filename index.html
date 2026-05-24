@@ -488,8 +488,8 @@
       }
       .swatch-grid::-webkit-scrollbar { display: none; }
       .swatch { width: 68px; }
-      .chip-grid { grid-template-columns: repeat(3, 1fr); align-items: start; }
-      .chip-swatch { width: 100%; aspect-ratio: 1 / 1; height: auto; }
+      .chip-grid { grid-template-columns: repeat(3, 1fr); align-items: start; padding-left: 4px; padding-right: 4px; }
+      .chip-swatch { width: 100%; aspect-ratio: 1 / 1; height: auto; align-self: center; }
       #p9 .card-ui--success { padding: 60px 24px; }
       #p9 .page-title { font-size: 32px; }
     }
@@ -1514,7 +1514,7 @@
 // ── PRICES ───────────────────────────────────────────────────────────────────
 const PRICES = { crate: 135, cushionL52: 36, cushionL62: 59, bowl: 8 };
 
-function fmt(n) { return 'A$' + n.toFixed(2).replace(/\.00$/, ''); }
+function fmt(n) { return 'A$' + n.toFixed(2); }
 
 function calcCrateExtrasTotal(rawExtras) {
   let total = 0;
@@ -1582,7 +1582,7 @@ const links = {
   trimLeft: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Trim-left_t7a552.png",
   trimRight: "https://res.cloudinary.com/detjogvqn/image/upload/v1779188014/trim_large_va2ajl.png",
   handle: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Handle_ikd3vp.png",
-  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/v1779365889/Wire_Door_uxyk31.png"
+  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/v1779657160/Wire_Door_3_s97fus.png"
 };
 
 const COLOURS = {
