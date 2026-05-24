@@ -336,6 +336,36 @@
     .chip-size-row { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 4px; }
     .chip-size-label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mid); min-width: 28px; }
     /* legacy chip-size-row kept for non-cushion use; cushion chips now use pill toggles */
+    /* ── LIGHTBOX ── */
+    .lightbox-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88); z-index: 9000;
+      align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-inner {
+      position: relative; max-width: 560px; width: 100%;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .lightbox-img {
+      width: 100%; border-radius: 16px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      display: block;
+    }
+    .lightbox-name {
+      color: #fff; font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; text-align: center;
+    }
+    .lightbox-close {
+      position: absolute; top: -14px; right: -14px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #fff; border: none; cursor: pointer;
+      font-size: 16px; font-weight: 800; color: var(--charcoal);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .chip-swatch.zoomable { cursor: zoom-in; }
   </style>
 
   <!-- ══════════════════════════════════════
@@ -363,8 +393,8 @@
       .scroll-area {
         max-height: 60vh;
         overflow-y: auto;
-        padding-right: 6px;
-        margin-right: -6px;
+        padding-right: 0;
+        margin-right: 0;
         -webkit-overflow-scrolling: touch;
       }
       .extra-section.active .extra-header {
@@ -627,7 +657,7 @@
         <div class="extra-content">
           <div class="chip-grid">
             <div class="colour-chip" id="chip-Cushion-L52-Midnight Forest">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531875/Midnight_Forest_ccggh0.png" alt="Midnight Forest">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531875/Midnight_Forest_ccggh0.png" alt="Midnight Forest">
               <div class="chip-name">Midnight Forest</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Midnight Forest','L52')" data-size="L52">L52</button>
@@ -645,7 +675,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Neon Geo Pink">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531875/Neon_Geo_Pink_amcpad.png" alt="Neon Geo Pink">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531875/Neon_Geo_Pink_amcpad.png" alt="Neon Geo Pink">
               <div class="chip-name">Neon Geo Pink</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Neon Geo Pink','L52')" data-size="L52">L52</button>
@@ -663,7 +693,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Hot Air Balloons">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Hot_Air_Balloons_zwsn3v.png" alt="Hot Air Balloons">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Hot_Air_Balloons_zwsn3v.png" alt="Hot Air Balloons">
               <div class="chip-name">Hot Air Balloons</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Hot Air Balloons','L52')" data-size="L52">L52</button>
@@ -681,7 +711,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Indigo Paisley">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Indigo_Paisley_gbwrax.png" alt="Indigo Paisley">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Indigo_Paisley_gbwrax.png" alt="Indigo Paisley">
               <div class="chip-name">Indigo Paisley</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Indigo Paisley','L52')" data-size="L52">L52</button>
@@ -699,7 +729,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Gothic Sketch Cats">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Gothic_Sketch_Cats_w6yt1s.png" alt="Gothic Sketch Cats">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Gothic_Sketch_Cats_w6yt1s.png" alt="Gothic Sketch Cats">
               <div class="chip-name">Gothic Sketch Cats</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Gothic Sketch Cats','L52')" data-size="L52">L52</button>
@@ -717,7 +747,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Golden Baroque">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Golden_Baroque_uwuupp.png" alt="Golden Baroque">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Golden_Baroque_uwuupp.png" alt="Golden Baroque">
               <div class="chip-name">Golden Baroque</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Golden Baroque','L52')" data-size="L52">L52</button>
@@ -735,7 +765,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Electric Moss">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Electric_Moss_fp6moz.png" alt="Electric Moss">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Electric_Moss_fp6moz.png" alt="Electric Moss">
               <div class="chip-name">Electric Moss</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Electric Moss','L52')" data-size="L52">L52</button>
@@ -753,7 +783,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Blue Camo Splatter">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Blue_Camo_Splatter_n9ynhs.png" alt="Blue Camo Splatter">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Blue_Camo_Splatter_n9ynhs.png" alt="Blue Camo Splatter">
               <div class="chip-name">Blue Camo Splatter</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Blue Camo Splatter','L52')" data-size="L52">L52</button>
@@ -771,7 +801,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Cosmic Leopard">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Cosmic_Leopard_zptrna.png" alt="Cosmic Leopard">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Cosmic_Leopard_zptrna.png" alt="Cosmic Leopard">
               <div class="chip-name">Cosmic Leopard</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Cosmic Leopard','L52')" data-size="L52">L52</button>
@@ -789,7 +819,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Classic Cheetah">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Classic_Cheetah_czj9ho.png" alt="Classic Cheetah">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Classic_Cheetah_czj9ho.png" alt="Classic Cheetah">
               <div class="chip-name">Classic Cheetah</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Classic Cheetah','L52')" data-size="L52">L52</button>
@@ -807,7 +837,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Charcoal Crushed Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Charcoal_Crushed_Velvet_i20na3.png" alt="Charcoal Crushed Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Charcoal_Crushed_Velvet_i20na3.png" alt="Charcoal Crushed Velvet">
               <div class="chip-name">Charcoal Crushed Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Charcoal Crushed Velvet','L52')" data-size="L52">L52</button>
@@ -825,7 +855,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Shiraz Crushed Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Shiraz_Crushed_Velvet_euz1qh.png" alt="Shiraz Crushed Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Shiraz_Crushed_Velvet_euz1qh.png" alt="Shiraz Crushed Velvet">
               <div class="chip-name">Shiraz Crushed Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Shiraz Crushed Velvet','L52')" data-size="L52">L52</button>
@@ -843,7 +873,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Vintage Ornate">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Vintage_Ornate_pzgwrk.png" alt="Vintage Ornate">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Vintage_Ornate_pzgwrk.png" alt="Vintage Ornate">
               <div class="chip-name">Vintage Ornate</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Vintage Ornate','L52')" data-size="L52">L52</button>
@@ -861,7 +891,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Abstract Coral Reef">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Abstract_Coral_Reef_zyedhf.png" alt="Abstract Coral Reef">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Abstract_Coral_Reef_zyedhf.png" alt="Abstract Coral Reef">
               <div class="chip-name">Abstract Coral Reef</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Abstract Coral Reef','L52')" data-size="L52">L52</button>
@@ -879,7 +909,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Aussie Stars">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Aussie_Stars_exfubn.png" alt="Aussie Stars">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Aussie_Stars_exfubn.png" alt="Aussie Stars">
               <div class="chip-name">Aussie Stars</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Aussie Stars','L52')" data-size="L52">L52</button>
@@ -897,7 +927,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Parachuting Kitties">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
               <div class="chip-name">Parachuting Kitties</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Parachuting Kitties','L52')" data-size="L52">L52</button>
@@ -915,7 +945,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Patina Dusk">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Patina_Dusk_ysavuq.png" alt="Patina Dusk">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Patina_Dusk_ysavuq.png" alt="Patina Dusk">
               <div class="chip-name">Patina Dusk</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Patina Dusk','L52')" data-size="L52">L52</button>
@@ -933,7 +963,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Neon Jungle">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Neon_Jungle_wv3es4.png" alt="Neon Jungle">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Neon_Jungle_wv3es4.png" alt="Neon Jungle">
               <div class="chip-name">Neon Jungle</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Neon Jungle','L52')" data-size="L52">L52</button>
@@ -951,7 +981,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-Cushion-L52-Slate Blue Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Slate_Blue_Velvet_iyqhq4.png" alt="Slate Blue Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Slate_Blue_Velvet_iyqhq4.png" alt="Slate Blue Velvet">
               <div class="chip-name">Slate Blue Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'Cushion','Slate Blue Velvet','L52')" data-size="L52">L52</button>
@@ -1044,7 +1074,7 @@
         <div class="extra-content">
           <div class="chip-grid">
             <div class="colour-chip" id="chip-ExtraCushion-L52-Midnight Forest">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531875/Midnight_Forest_ccggh0.png" alt="Midnight Forest">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531875/Midnight_Forest_ccggh0.png" alt="Midnight Forest">
               <div class="chip-name">Midnight Forest</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Midnight Forest','L52')" data-size="L52">L52</button>
@@ -1062,7 +1092,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Neon Geo Pink">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531875/Neon_Geo_Pink_amcpad.png" alt="Neon Geo Pink">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531875/Neon_Geo_Pink_amcpad.png" alt="Neon Geo Pink">
               <div class="chip-name">Neon Geo Pink</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Neon Geo Pink','L52')" data-size="L52">L52</button>
@@ -1080,7 +1110,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Hot Air Balloons">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Hot_Air_Balloons_zwsn3v.png" alt="Hot Air Balloons">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Hot_Air_Balloons_zwsn3v.png" alt="Hot Air Balloons">
               <div class="chip-name">Hot Air Balloons</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Hot Air Balloons','L52')" data-size="L52">L52</button>
@@ -1098,7 +1128,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Indigo Paisley">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Indigo_Paisley_gbwrax.png" alt="Indigo Paisley">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Indigo_Paisley_gbwrax.png" alt="Indigo Paisley">
               <div class="chip-name">Indigo Paisley</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Indigo Paisley','L52')" data-size="L52">L52</button>
@@ -1116,7 +1146,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Gothic Sketch Cats">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Gothic_Sketch_Cats_w6yt1s.png" alt="Gothic Sketch Cats">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Gothic_Sketch_Cats_w6yt1s.png" alt="Gothic Sketch Cats">
               <div class="chip-name">Gothic Sketch Cats</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Gothic Sketch Cats','L52')" data-size="L52">L52</button>
@@ -1134,7 +1164,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Golden Baroque">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Golden_Baroque_uwuupp.png" alt="Golden Baroque">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Golden_Baroque_uwuupp.png" alt="Golden Baroque">
               <div class="chip-name">Golden Baroque</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Golden Baroque','L52')" data-size="L52">L52</button>
@@ -1152,7 +1182,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Electric Moss">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Electric_Moss_fp6moz.png" alt="Electric Moss">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Electric_Moss_fp6moz.png" alt="Electric Moss">
               <div class="chip-name">Electric Moss</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Electric Moss','L52')" data-size="L52">L52</button>
@@ -1170,7 +1200,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Blue Camo Splatter">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Blue_Camo_Splatter_n9ynhs.png" alt="Blue Camo Splatter">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Blue_Camo_Splatter_n9ynhs.png" alt="Blue Camo Splatter">
               <div class="chip-name">Blue Camo Splatter</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Blue Camo Splatter','L52')" data-size="L52">L52</button>
@@ -1188,7 +1218,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Cosmic Leopard">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Cosmic_Leopard_zptrna.png" alt="Cosmic Leopard">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Cosmic_Leopard_zptrna.png" alt="Cosmic Leopard">
               <div class="chip-name">Cosmic Leopard</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Cosmic Leopard','L52')" data-size="L52">L52</button>
@@ -1206,7 +1236,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Classic Cheetah">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531874/Classic_Cheetah_czj9ho.png" alt="Classic Cheetah">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531874/Classic_Cheetah_czj9ho.png" alt="Classic Cheetah">
               <div class="chip-name">Classic Cheetah</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Classic Cheetah','L52')" data-size="L52">L52</button>
@@ -1224,7 +1254,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Charcoal Crushed Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Charcoal_Crushed_Velvet_i20na3.png" alt="Charcoal Crushed Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Charcoal_Crushed_Velvet_i20na3.png" alt="Charcoal Crushed Velvet">
               <div class="chip-name">Charcoal Crushed Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Charcoal Crushed Velvet','L52')" data-size="L52">L52</button>
@@ -1242,7 +1272,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Shiraz Crushed Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Shiraz_Crushed_Velvet_euz1qh.png" alt="Shiraz Crushed Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Shiraz_Crushed_Velvet_euz1qh.png" alt="Shiraz Crushed Velvet">
               <div class="chip-name">Shiraz Crushed Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Shiraz Crushed Velvet','L52')" data-size="L52">L52</button>
@@ -1260,7 +1290,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Vintage Ornate">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Vintage_Ornate_pzgwrk.png" alt="Vintage Ornate">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Vintage_Ornate_pzgwrk.png" alt="Vintage Ornate">
               <div class="chip-name">Vintage Ornate</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Vintage Ornate','L52')" data-size="L52">L52</button>
@@ -1278,7 +1308,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Abstract Coral Reef">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Abstract_Coral_Reef_zyedhf.png" alt="Abstract Coral Reef">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Abstract_Coral_Reef_zyedhf.png" alt="Abstract Coral Reef">
               <div class="chip-name">Abstract Coral Reef</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Abstract Coral Reef','L52')" data-size="L52">L52</button>
@@ -1296,7 +1326,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Aussie Stars">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Aussie_Stars_exfubn.png" alt="Aussie Stars">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Aussie_Stars_exfubn.png" alt="Aussie Stars">
               <div class="chip-name">Aussie Stars</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Aussie Stars','L52')" data-size="L52">L52</button>
@@ -1314,7 +1344,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Parachuting Kitties">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531873/Parachuting_Puss_ujlslt.png" alt="Parachuting Kitties">
               <div class="chip-name">Parachuting Kitties</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Parachuting Kitties','L52')" data-size="L52">L52</button>
@@ -1332,7 +1362,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Patina Dusk">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Patina_Dusk_ysavuq.png" alt="Patina Dusk">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Patina_Dusk_ysavuq.png" alt="Patina Dusk">
               <div class="chip-name">Patina Dusk</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Patina Dusk','L52')" data-size="L52">L52</button>
@@ -1350,7 +1380,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Neon Jungle">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Neon_Jungle_wv3es4.png" alt="Neon Jungle">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Neon_Jungle_wv3es4.png" alt="Neon Jungle">
               <div class="chip-name">Neon Jungle</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Neon Jungle','L52')" data-size="L52">L52</button>
@@ -1368,7 +1398,7 @@
               </div>
             </div>
             <div class="colour-chip" id="chip-ExtraCushion-L52-Slate Blue Velvet">
-              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/v1779531872/Slate_Blue_Velvet_iyqhq4.png" alt="Slate Blue Velvet">
+              <img class="chip-swatch" src="https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779531872/Slate_Blue_Velvet_iyqhq4.png" alt="Slate Blue Velvet">
               <div class="chip-name">Slate Blue Velvet</div>
               <div class="chip-size-pills">
                 <button class="chip-size-pill" onclick="toggleCushionPill(this,'ExtraCushion','Slate Blue Velvet','L52')" data-size="L52">L52</button>
@@ -1545,12 +1575,12 @@ const canvas = document.getElementById('crateCanvas');
 const ctx = canvas.getContext('2d');
 
 const links = {
-  base: "https://res.cloudinary.com/detjogvqn/image/upload/v1779187556/Base_flat_tumc9z.png",
-  top: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663908/Top_z5bhvo.png",
-  trimLeft: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Trim-left_t7a552.png",
-  trimRight: "https://res.cloudinary.com/detjogvqn/image/upload/v1779188014/trim_large_va2ajl.png",
-  handle: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Handle_ikd3vp.png",
-  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/v1779365889/Wire_Door_uxyk31.png"
+  base: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779187556/Base_flat_tumc9z.png",
+  top: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663908/Top_z5bhvo.png",
+  trimLeft: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663907/Trim-left_t7a552.png",
+  trimRight: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779188014/trim_large_va2ajl.png",
+  handle: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663907/Handle_ikd3vp.png",
+  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779365889/Wire_Door_uxyk31.png"
 };
 
 const COLOURS = {
@@ -2165,5 +2195,41 @@ init();
 <script>
   if (window.parentIFrame) { window.parentIFrame.autoResize(true); }
 </script>
+<!-- LIGHTBOX -->
+<div id="lightbox-overlay" class="lightbox-overlay" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="">
+    <div id="lightbox-name" class="lightbox-name"></div>
+  </div>
+</div>
+
+<script>
+function openLightbox(src, name) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-name').innerText = name;
+  document.getElementById('lightbox-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Attach click handlers to all cushion chip swatches after DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.chip-swatch').forEach(function(img) {
+    img.classList.add('zoomable');
+    img.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openLightbox(img.src, img.alt);
+    });
+  });
+});
+</script>
+
 </body>
 </html>
