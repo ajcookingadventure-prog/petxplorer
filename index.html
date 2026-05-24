@@ -339,17 +339,19 @@
     /* ── LIGHTBOX ── */
     .lightbox-overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.88); z-index: 9000;
+      background: rgba(0,0,0,0.75); z-index: 9000;
       align-items: center; justify-content: center;
       padding: 24px;
     }
     .lightbox-overlay.active { display: flex; }
     .lightbox-inner {
-      position: relative; max-width: 560px; width: 100%;
+      position: relative;
       display: flex; flex-direction: column; align-items: center; gap: 12px;
     }
     .lightbox-img {
-      width: 100%; border-radius: 16px;
+      width: 170px; height: 170px;
+      object-fit: cover;
+      border-radius: 16px;
       box-shadow: 0 24px 80px rgba(0,0,0,0.5);
       display: block;
     }
@@ -1575,12 +1577,12 @@ const canvas = document.getElementById('crateCanvas');
 const ctx = canvas.getContext('2d');
 
 const links = {
-  base: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779187556/Base_flat_tumc9z.png",
-  top: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663908/Top_z5bhvo.png",
-  trimLeft: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663907/Trim-left_t7a552.png",
-  trimRight: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779188014/trim_large_va2ajl.png",
-  handle: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1778663907/Handle_ikd3vp.png",
-  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/w_400,h_400,c_fill/v1779365889/Wire_Door_uxyk31.png"
+  base: "https://res.cloudinary.com/detjogvqn/image/upload/v1779187556/Base_flat_tumc9z.png",
+  top: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663908/Top_z5bhvo.png",
+  trimLeft: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Trim-left_t7a552.png",
+  trimRight: "https://res.cloudinary.com/detjogvqn/image/upload/v1779188014/trim_large_va2ajl.png",
+  handle: "https://res.cloudinary.com/detjogvqn/image/upload/v1778663907/Handle_ikd3vp.png",
+  crateDoor: "https://res.cloudinary.com/detjogvqn/image/upload/v1779365889/Wire_Door_uxyk31.png"
 };
 
 const COLOURS = {
